@@ -5,6 +5,8 @@
 [ext_resource type="Script" path="res://scripts/systems/MedicineSystem.gd" id="3_medicine"]
 [ext_resource type="PackedScene" path="res://scenes/characters/Enemy.tscn" id="4_enemy"]
 [ext_resource type="Texture2D" uid="uid://ground_tile" path="res://assets/art/ground_tile.png" id="5_ground_tex"]
+[ext_resource type="Script" path="res://scripts/systems/LevelTransition.gd" id="6_level_transition"]
+[ext_resource type="Script" path="res://scripts/systems/SummonSystem.gd" id="7_summon"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(1600, 64)
@@ -24,6 +26,9 @@ size = Vector2(24, 200)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sign"]
 size = Vector2(80, 40)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_portal"]
+size = Vector2(64, 96)
+
 [node name="Level1_Lianqi" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_player")]
@@ -33,6 +38,9 @@ position = Vector2(160, 520)
 
 [node name="MedicineSystem" type="Node" parent="."]
 script = ExtResource("3_medicine")
+
+[node name="SummonSystem" type="Node" parent="."]
+script = ExtResource("7_summon")
 
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(640, 664)
@@ -185,3 +193,26 @@ offset_top = -20.0
 offset_right = 40.0
 offset_bottom = 20.0
 color = Color(0.6, 0.8, 0.4, 1.0)
+
+[node name="Portal" type="Area2D" parent="."]
+position = Vector2(1250, 164)
+script = ExtResource("6_level_transition")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
+shape = SubResource("RectangleShape2D_portal")
+
+[node name="Sprite2D" type="ColorRect" parent="Portal"]
+offset_left = -32.0
+offset_top = -48.0
+offset_right = 32.0
+offset_bottom = 48.0
+color = Color(0.8, 0.6, 1.0, 0.8)
+
+[node name="Label" type="Label" parent="Portal"]
+offset_left = -24.0
+offset_top = -12.0
+offset_right = 24.0
+offset_bottom = 12.0
+text = "出口"
+horizontal_alignment = 1
+vertical_alignment = 1

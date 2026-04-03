@@ -21,6 +21,7 @@ var _active_buffs: Dictionary = {}
 
 func _ready() -> void:
 	set_process(true)
+	add_to_group("medicine_system")
 
 
 func _process(delta: float) -> void:

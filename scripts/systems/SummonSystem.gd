@@ -55,6 +55,7 @@ var _cooldown_remaining: float = 0.0
 
 func _ready() -> void:
 	set_process(true)
+	add_to_group("summon_system")
 	_unlock_starting_summons()
 
 

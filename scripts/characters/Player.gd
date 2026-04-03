@@ -63,6 +63,9 @@ var _dash_cooldown_left: float = 0.0
 @onready var _death_zone: Area2D = get_node_or_null(death_zone_path)
 @onready var _spawn_point: Marker2D = get_node_or_null(spawn_point_path)
 
+var _medicine_system: Node = null
+var _summon_system: Node = null
+
 
 func _ready() -> void:
 	if stats == null:
@@ -74,6 +77,9 @@ func _ready() -> void:
 
 	if _death_zone != null:
 		_death_zone.body_entered.connect(_on_death_zone_body_entered)
+
+	_medicine_system = get_tree().get_first_node_in_group("medicine_system")
+	_summon_system = get_tree().get_first_node_in_group("summon_system")
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -89,6 +95,12 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if event.is_action_pressed("attack"):
 		_attack_pressed = true
+
+	if event.is_action_pressed("medicine"):
+		_use_medicine()
+
+	if event.is_action_pressed("summon"):
+		_call_summon()
 
 
 func _physics_process(delta: float) -> void:
@@ -241,6 +253,17 @@ func _respawn() -> void:
 		stats.current_health = stats.max_health
 
 
+func _use_medicine() -> void:
+	if _medicine_system != null and _medicine_system.has_method("use_item"):
+		# 默认使用回血丹
+		_medicine_system.use_item("health_pill")
+
+
+func _call_summon() -> void:
+	if _summon_system != null and _summon_system.has_method("call_summon"):
+		_summon_system.call_summon(SummonBase.SummonType.SWORD_SPIRIT)
+
+
 func _update_facing_direction() -> void:
 	var input_axis: float = Input.get_axis("move_left", "move_right")
 	if input_axis < 0.0:
@@ -298,6 +321,8 @@ func _ensure_input_actions() -> void:
 	_add_input_action_if_missing("jump", [KEY_W, KEY_UP, KEY_SPACE])
 	_add_input_action_if_missing("dash", [KEY_SHIFT])
 	_add_input_action_if_missing("attack", [KEY_J])
+	_add_input_action_if_missing("medicine", [KEY_K])
+	_add_input_action_if_missing("summon", [KEY_L])
 
 
 func _add_input_action_if_missing(action_name: StringName, keys: Array[int]) -> void:
