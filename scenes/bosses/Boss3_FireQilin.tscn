@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://boss3_scene"]
+
+[ext_resource type="Script" path="res://scripts/characters/Boss.gd" id="1_boss"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_boss"]
+size = Vector2(72, 108)
+
+[node name="Boss3_FireQilin" type="CharacterBody2D"]
+script = ExtResource("1_boss")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_boss")
+position = Vector2(0, -54)
+
+[node name="Sprite" type="ColorRect" parent="."]
+offset_left = -36.0
+offset_top = -108.0
+offset_right = 36.0
+offset_bottom = 0.0
+color = Color(1.0, 0.3, 0.1, 1.0)
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -45.0
+offset_top = -128.0
+offset_right = 45.0
+offset_bottom = -108.0
+max_value = 450.0
+value = 450.0
+show_percentage = false

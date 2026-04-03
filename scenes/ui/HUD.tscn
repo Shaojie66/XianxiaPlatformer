@@ -1,0 +1,133 @@
+[gd_scene load_steps=4 format=3 uid="uid://hud_scene"]
+
+[ext_resource type="Script" path="res://scripts/ui/HUD.gd" id="1_2utjx"]
+[ext_resource type="Script" path="res://scripts/ui/HealthBar.gd" id="2_jk2q5"]
+[ext_resource type="Script" path="res://scripts/ui/RealmIndicator.gd" id="3_2tp4n"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_2utjx")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 428.0
+offset_bottom = 252.0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="RootVBox" type="VBoxContainer" parent="MarginContainer"]
+theme_override_constants/separation = 12
+
+[node name="StatsPanel" type="PanelContainer" parent="MarginContainer/RootVBox"]
+custom_minimum_size = Vector2(384, 94)
+
+[node name="StatsVBox" type="VBoxContainer" parent="MarginContainer/RootVBox/StatsPanel"]
+theme_override_constants/separation = 8
+
+[node name="RealmLabel" type="Label" parent="MarginContainer/RootVBox/StatsPanel/StatsVBox"]
+custom_minimum_size = Vector2(360, 36)
+script = ExtResource("3_2tp4n")
+text = "境界  炼气"
+
+[node name="HealthBar" type="Control" parent="MarginContainer/RootVBox/StatsPanel/StatsVBox"]
+custom_minimum_size = Vector2(360, 28)
+script = ExtResource("2_jk2q5")
+
+[node name="BuffList" type="HBoxContainer" parent="MarginContainer/RootVBox"]
+custom_minimum_size = Vector2(384, 36)
+theme_override_constants/separation = 8
+
+[node name="MedicinePanel" type="PanelContainer" parent="MarginContainer/RootVBox"]
+custom_minimum_size = Vector2(384, 96)
+
+[node name="MedicineVBox" type="VBoxContainer" parent="MarginContainer/RootVBox/MedicinePanel"]
+theme_override_constants/separation = 6
+
+[node name="MedicineTitle" type="Label" parent="MarginContainer/RootVBox/MedicinePanel/MedicineVBox"]
+text = "丹药"
+
+[node name="MedicineHotbar" type="GridContainer" parent="MarginContainer/RootVBox/MedicinePanel/MedicineVBox"]
+columns = 5
+
+[node name="Slot0" type="PanelContainer" parent="MarginContainer/RootVBox/MedicinePanel/MedicineVBox/MedicineHotbar"]
+custom_minimum_size = Vector2(68, 54)
+
+[node name="SlotVBox" type="VBoxContainer" parent="MarginContainer/RootVBox/MedicinePanel/MedicineVBox/MedicineHotbar/Slot0"]
+
+[node name="ItemName" type="Label" parent="MarginContainer/RootVBox/MedicinePanel/MedicineVBox/MedicineHotbar/Slot0/SlotVBox"]
+horizontal_alignment = 1
+text = "空位"
+
+[node name="Quantity" type="Label" parent="MarginContainer/RootVBox/MedicinePanel/MedicineVBox/MedicineHotbar/Slot0/SlotVBox"]
+horizontal_alignment = 1
+text = "x0"
+
+[node name="Slot1" type="PanelContainer" parent="MarginContainer/RootVBox/MedicinePanel/MedicineVBox/MedicineHotbar"]
+custom_minimum_size = Vector2(68, 54)
+
+[node name="SlotVBox" type="VBoxContainer" parent="MarginContainer/RootVBox/MedicinePanel/MedicineVBox/MedicineHotbar/Slot1"]
+
+[node name="ItemName" type="Label" parent="MarginContainer/RootVBox/MedicinePanel/MedicineVBox/MedicineHotbar/Slot1/SlotVBox"]
+horizontal_alignment = 1
+text = "空位"
+
+[node name="Quantity" type="Label" parent="MarginContainer/RootVBox/MedicinePanel/MedicineVBox/MedicineHotbar/Slot1/SlotVBox"]
+horizontal_alignment = 1
+text = "x0"
+
+[node name="Slot2" type="PanelContainer" parent="MarginContainer/RootVBox/MedicinePanel/MedicineVBox/MedicineHotbar"]
+custom_minimum_size = Vector2(68, 54)
+
+[node name="SlotVBox" type="VBoxContainer" parent="MarginContainer/RootVBox/MedicinePanel/MedicineVBox/MedicineHotbar/Slot2"]
+
+[node name="ItemName" type="Label" parent="MarginContainer/RootVBox/MedicinePanel/MedicineVBox/MedicineHotbar/Slot2/SlotVBox"]
+horizontal_alignment = 1
+text = "空位"
+
+[node name="Quantity" type="Label" parent="MarginContainer/RootVBox/MedicinePanel/MedicineVBox/MedicineHotbar/Slot2/SlotVBox"]
+horizontal_alignment = 1
+text = "x0"
+
+[node name="Slot3" type="PanelContainer" parent="MarginContainer/RootVBox/MedicinePanel/MedicineVBox/MedicineHotbar"]
+custom_minimum_size = Vector2(68, 54)
+
+[node name="SlotVBox" type="VBoxContainer" parent="MarginContainer/RootVBox/MedicinePanel/MedicineVBox/MedicineHotbar/Slot3"]
+
+[node name="ItemName" type="Label" parent="MarginContainer/RootVBox/MedicinePanel/MedicineVBox/MedicineHotbar/Slot3/SlotVBox"]
+horizontal_alignment = 1
+text = "空位"
+
+[node name="Quantity" type="Label" parent="MarginContainer/RootVBox/MedicinePanel/MedicineVBox/MedicineHotbar/Slot3/SlotVBox"]
+horizontal_alignment = 1
+text = "x0"
+
+[node name="Slot4" type="PanelContainer" parent="MarginContainer/RootVBox/MedicinePanel/MedicineVBox/MedicineHotbar"]
+custom_minimum_size = Vector2(68, 54)
+
+[node name="SlotVBox" type="VBoxContainer" parent="MarginContainer/RootVBox/MedicinePanel/MedicineVBox/MedicineHotbar/Slot4"]
+
+[node name="ItemName" type="Label" parent="MarginContainer/RootVBox/MedicinePanel/MedicineVBox/MedicineHotbar/Slot4/SlotVBox"]
+horizontal_alignment = 1
+text = "空位"
+
+[node name="Quantity" type="Label" parent="MarginContainer/RootVBox/MedicinePanel/MedicineVBox/MedicineHotbar/Slot4/SlotVBox"]
+horizontal_alignment = 1
+text = "x0"
+
+[node name="InteractionPrompt" type="Label" parent="."]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -180.0
+offset_top = -74.0
+offset_right = 180.0
+offset_bottom = -34.0
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "按 E 交互"

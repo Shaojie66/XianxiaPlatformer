@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://level3_scene"]
+
+[ext_resource type="PackedScene" path="res://scenes/characters/Player.tscn" id="1_player"]
+[ext_resource type="PackedScene" path="res://scenes/ui/HUD.tscn" id="2_hud"]
+[ext_resource type="Script" path="res://scripts/systems/MedicineSystem.gd" id="3_medicine"]
+[ext_resource type="PackedScene" path="res://scenes/bosses/Boss1_MountainGuardian.tscn" id="4_boss"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
+size = Vector2(1600, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_platform"]
+size = Vector2(200, 32)
+
+[node name="Level3_Jindan" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+position = Vector2(160, 520)
+
+[node name="HUD" parent="." instance=ExtResource("2_hud")]
+
+[node name="MedicineSystem" type="Node" parent="."]
+script = ExtResource("3_medicine")
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(640, 664)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+shape = SubResource("RectangleShape2D_ground")
+
+[node name="BossArena" type="StaticBody2D" parent="."]
+position = Vector2(1200, 600)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossArena"]
+shape = SubResource("RectangleShape2D_ground")
+
+[node name="Platform1" type="StaticBody2D" parent="."]
+position = Vector2(500, 450)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform1"]
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="Platform2" type="StaticBody2D" parent="."]
+position = Vector2(800, 350)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="Boss1" parent="." instance=ExtResource("4_boss")]
+position = Vector2(1200, 540)
+max_health = 300
+
+[node name="SpawnMarker" type="Marker2D" parent="."]
+position = Vector2(160, 520)

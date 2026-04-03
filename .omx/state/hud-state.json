@@ -1,0 +1,5 @@
+{
+  "last_turn_at": "2026-04-03T04:29:04.775Z",
+  "turn_count": 1,
+  "last_agent_output": "**Findings**\n- Critical: 主要可玩场景当前就加载不起来。`Level1`/`Level3` 实测启动时先后卡在无效的玩家场景、HUD 脚本解析错误和 Boss 脚本解析错误上；"
+}

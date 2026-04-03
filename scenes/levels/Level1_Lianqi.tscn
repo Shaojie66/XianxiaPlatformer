@@ -1,0 +1,187 @@
+[gd_scene load_steps=11 format=3 uid="uid://level1_scene"]
+
+[ext_resource type="PackedScene" path="res://scenes/characters/Player.tscn" id="1_player"]
+[ext_resource type="PackedScene" path="res://scenes/ui/HUD.tscn" id="2_hud"]
+[ext_resource type="Script" path="res://scripts/systems/MedicineSystem.gd" id="3_medicine"]
+[ext_resource type="PackedScene" path="res://scenes/characters/Enemy.tscn" id="4_enemy"]
+[ext_resource type="Texture2D" uid="uid://ground_tile" path="res://assets/art/ground_tile.png" id="5_ground_tex"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
+size = Vector2(1600, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_platform"]
+size = Vector2(200, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall"]
+size = Vector2(32, 800)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_death_zone"]
+size = Vector2(2000, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pillar"]
+size = Vector2(24, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sign"]
+size = Vector2(80, 40)
+
+[node name="Level1_Lianqi" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+position = Vector2(160, 520)
+
+[node name="HUD" parent="." instance=ExtResource("2_hud")]
+
+[node name="MedicineSystem" type="Node" parent="."]
+script = ExtResource("3_medicine")
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(640, 664)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+shape = SubResource("RectangleShape2D_ground")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
+texture = ExtResource("5_ground_tex")
+region_enabled = true
+region_rect = Rect2(0, 0, 1600, 64)
+
+[node name="Platform1" type="StaticBody2D" parent="."]
+position = Vector2(400, 520)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform1"]
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform1"]
+texture = ExtResource("5_ground_tex")
+region_enabled = true
+region_rect = Rect2(0, 0, 200, 32)
+
+[node name="Platform2" type="StaticBody2D" parent="."]
+position = Vector2(700, 420)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform2"]
+texture = ExtResource("5_ground_tex")
+region_enabled = true
+region_rect = Rect2(0, 0, 200, 32)
+
+[node name="Platform3" type="StaticBody2D" parent="."]
+position = Vector2(1000, 320)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3"]
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform3"]
+texture = ExtResource("5_ground_tex")
+region_enabled = true
+region_rect = Rect2(0, 0, 200, 32)
+
+[node name="Platform4" type="StaticBody2D" parent="."]
+position = Vector2(1300, 220)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform4"]
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform4"]
+texture = ExtResource("5_ground_tex")
+region_enabled = true
+region_rect = Rect2(0, 0, 200, 32)
+
+[node name="Platform5" type="StaticBody2D" parent="."]
+position = Vector2(1100, 380)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform5"]
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform5"]
+texture = ExtResource("5_ground_tex")
+region_enabled = true
+region_rect = Rect2(0, 0, 200, 32)
+
+[node name="Platform6" type="StaticBody2D" parent="."]
+position = Vector2(200, 480)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform6"]
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform6"]
+texture = ExtResource("5_ground_tex")
+region_enabled = true
+region_rect = Rect2(0, 0, 200, 32)
+
+[node name="Enemy1" parent="." instance=ExtResource("4_enemy")]
+position = Vector2(600, 560)
+
+[node name="Enemy2" parent="." instance=ExtResource("4_enemy")]
+position = Vector2(900, 560)
+
+[node name="Enemy3" parent="." instance=ExtResource("4_enemy")]
+position = Vector2(1000, 264)
+
+[node name="Enemy4" parent="." instance=ExtResource("4_enemy")]
+position = Vector2(700, 364)
+
+[node name="SpawnMarker" type="Marker2D" parent="."]
+position = Vector2(160, 520)
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+position = Vector2(-16, 400)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+shape = SubResource("RectangleShape2D_wall")
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+position = Vector2(1296, 400)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+shape = SubResource("RectangleShape2D_wall")
+
+[node name="DeathZone" type="Area2D" parent="."]
+position = Vector2(640, 900)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
+shape = SubResource("RectangleShape2D_death_zone")
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(160, 520)
+
+[node name="Pillar1" type="StaticBody2D" parent="."]
+position = Vector2(100, 564)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pillar1"]
+shape = SubResource("RectangleShape2D_pillar")
+
+[node name="Sprite2D" type="ColorRect" parent="Pillar1"]
+offset_left = -12.0
+offset_top = -200.0
+offset_right = 12.0
+offset_bottom = 0.0
+color = Color(0.4, 0.35, 0.3, 1.0)
+
+[node name="Pillar2" type="StaticBody2D" parent="."]
+position = Vector2(1200, 564)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pillar2"]
+shape = SubResource("RectangleShape2D_pillar")
+
+[node name="Sprite2D" type="ColorRect" parent="Pillar2"]
+offset_left = -12.0
+offset_top = -200.0
+offset_right = 12.0
+offset_bottom = 0.0
+color = Color(0.4, 0.35, 0.3, 1.0)
+
+[node name="RealmSign" type="StaticBody2D" parent="."]
+position = Vector2(80, 440)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RealmSign"]
+shape = SubResource("RectangleShape2D_sign")
+
+[node name="Sprite2D" type="ColorRect" parent="RealmSign"]
+offset_left = -40.0
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+color = Color(0.6, 0.8, 0.4, 1.0)

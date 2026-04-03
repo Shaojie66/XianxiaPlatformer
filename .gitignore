@@ -1,0 +1,21 @@
+# Godot specific
+.godot/
+*.import
+
+# Build artifacts
+bin/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+*.code-workspace
+
+# Logs
+*.log
+
+# Temp
+*.tmp
+*.bak
